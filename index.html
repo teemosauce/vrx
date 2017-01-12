@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>vrx</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+  </body>
+
+  <script type="text/javascript">
+
+  	function sort(arr){
+  		
+  		var t = 0;
+  		for(var i = 0, len = arr.length;i<len;i++){
+  			for(var j = i+1; j<len;j++){
+  				if(arr[i] > arr[j]){
+  					var temp = arr[j]
+  					arr[j] = arr[i];
+  					arr[i] = temp;
+					
+					setTimeout(function(str){
+						return function(){
+			  				document.getElementById('app').innerText += str + '\n';
+						}
+			  		}(arr.join('.')), (t++) * 1000)		
+  				}
+  			}
+  		}
+		document.getElementById('app').innerText += '==========第一种排序方案（次数）' + t;
+  		return arr;
+  	}
+
+  	function sort2(arr){
+
+  		var t = 0;
+  		for(var i = 0, len = arr.length;i<len;i++){
+  			for(var j = 0; j<len - 1 - i;j++){
+  				if(arr[j] > arr[j+1]){
+  					var temp = arr[j]
+  					arr[j] = arr[j+1];
+  					arr[j+1] = temp;
+					
+					setTimeout(function(str){
+						return function(){
+			  				document.getElementById('app').innerText += str + '\n';
+						}
+			  		}(arr.join('.')), (t++) * 1000)		
+  				}
+  			}
+  		}
+		document.getElementById('app').innerText += '=========第二种排序方案（次数）' + t + "xxx";
+  		return arr;
+  	}
+
+
+  	function getList(n){
+		var list = [];
+		for(var i = 0; i < 1000000;i++){
+	  		list.push(Math.random() * i);
+	  	}
+
+	  	return list;
+  	}
+
+  	// sort(getList(10));
+  	// sort2(getList(10));
+  	/*
+  	for(let i = 0; i<=100;i++){
+  		setTimeout(function(){
+  			document.getElementById('app').innerText = i;
+  		}, 100 * i)
+  	}*/
+  </script>
+</html>
